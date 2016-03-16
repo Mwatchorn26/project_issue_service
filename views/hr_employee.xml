@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+
+                <!--                                                    -->
+                <!-- project Inherit Addon             -->
+                <!--                                                    -->
+                <record model="ir.ui.view" id="project_form_add_contacts">
+                <field name="name">project.project.form.contacts</field>
+                <field name="model">hr.employee</field>
+                <field name="inherit_id" ref="hr.view_employee_form"/>
+                <field name="arch" type="xml">
+                        <data>
+                            <!-- Replace the current Administration group with Admin PLUS the Site Contact people -->
+                            <xpath expr="//field[@name='coach_id']" position="after">
+                                <field name="is_service_personnel" />
+                            </xpath>
+                        </data>
+                </field>
+                </record>
+        </data>
+</openerp>
