@@ -36,6 +36,9 @@ class project_issue_service(models.Model):
 
     service_personnel_ids = fields.Many2many(comodel_name="hr.employee", string="Service Team", domain="[('is_service_personnel','=',True)]", help="These are your company employees who go out to customer sites to perform service functions.")
 
+
+
+
 class hr_employee(models.Model):
     """ Add the 'service person' option to employees, so they can be easily flagged and filtered."""
     _inherit = "hr.employee"
@@ -43,12 +46,12 @@ class hr_employee(models.Model):
     is_service_personnel = fields.Boolean("Service Personnel", help="This person may go on-site for service calls.")
 
 
-class res_partner(models.Model):
-    """ Add the 'service person' option to users, so they can be easily flagged and filtered."""
-    _inherit = "res.partner"
-
-    project_ids = fields.Many2many("project.project", string="Projects", help="These are the projects associated with this partner.")
-
+#class res_partner(models.Model):
+#    """ Add the 'service person' option to users, so they can be easily flagged and filtered."""
+#    _inherit = "res.partner"
+#
+#    project_ids = fields.Many2many("project.project", string="Projects", help="These are the projects associated with this partner.")
+#
 
 class project(models.Model):
     """Inherit the project, and adds the contacts for both sides."""
@@ -63,6 +66,4 @@ class project(models.Model):
 help="These are your counterparts, the people you contact who work for the customer company.")
 
 #['&', (res.partners,'not in',res.users.ids),
-
-
 
