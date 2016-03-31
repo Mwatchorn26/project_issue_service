@@ -12,20 +12,10 @@
                 <field name="arch" type="xml">
                         <data>
                             <!-- Replace the current Administration group with Admin PLUS the Site Contact people -->
-                            <xpath expr="//group[@string='Administration']" position="after">
-                                    <group string="Site Contacts">
-
-
-                                            <field name="site_contact_ids" colspan="4" nolabel="1" widget="many2many_tags" >
-                                                <tree editable="bottom" string="Site Contacts">
-                                                    <field name="name" widget="selection"/>
-<!--                                                <field name="function" />
--->                                              <!--   <field name="spec_variant_pq" />-->
-                                                </tree>
-                                            </field>
-
-
-                                    </group>
+                            <xpath expr="//page[@string='Other Info']" position="after">
+                                <page string="Contacts">
+                                        <field name="site_contact_ids"/>
+                                </page>
                             </xpath>
                         </data>
                 </field>
@@ -62,8 +52,7 @@
                                         <button name="case_escalate" string="Escalate" type="object" class="oe_link"
                                                 groups="base.group_user"/>
                                     </div>
-                                    <field name="site_contact_ids" widget='many2many_tags'/>
-                                    <field name="service_personnel_ids" widget='many2many_tags'/>
+                                    <field name="site_contact_ids"/>
                                 </group>
                                 <group>
                                     <field name="id"/>
@@ -78,6 +67,8 @@
                                         <field name="progress" widget="progressbar" attrs="{'invisible':[('task_id','=',False)]}" class="oe_inline"/>
                                     </div>
                                     <!-- <field name="service_personnel_ids" widget="many2many_tags"/> -->
+
+                                    <field name="service_personnel_ids"/>
                                 </group>
                             </group>
                             <notebook>
@@ -100,8 +91,6 @@
                                         </group>
                                     </group>
                                 </page>
-
-
 
                                 <page string="Costs">
                                     <group>
